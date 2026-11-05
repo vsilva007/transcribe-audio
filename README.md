@@ -1,10 +1,21 @@
-# 🎙️ ss-transcribe-audio
+<p align="center"><img src="docs/assets/readme-banner.svg" alt="Transcribe Audio — de audio y vídeo a TXT y SRT" width="1200"></p>
+
+<h1 align="center">Transcribe Audio</h1>
+<p align="center">
+  <a href="LICENSE"><img alt="Licencia MIT" src="https://img.shields.io/badge/License-MIT-22c55e"></a>
+  <a href="#-uso-con-python"><img alt="Python" src="https://img.shields.io/badge/Python-CLI-3776AB?logo=python&amp;logoColor=white"></a>
+  <a href="#-funcionalidad"><img alt="Salidas TXT y SRT" src="https://img.shields.io/badge/Output-TXT_%2B_SRT-8b5cf6"></a>
+</p>
 
 **Convierte audio y vídeo en texto y subtítulos con Whisper, desde tu terminal.**
 
 Transcribe archivos individuales o carpetas completas y genera una transcripción `.txt` y subtítulos `.srt` por archivo. El reconocimiento se ejecuta localmente, con español y el modelo `small` como configuración predeterminada.
 
-**Audio y vídeo → Whisper → Texto + Subtítulos**
+| 🎧 Entrada | 🧠 Proceso local | 📝 Resultado |
+| :--- | :--- | :--- |
+| Un archivo o una carpeta | Whisper con idioma y modelo configurables | Texto UTF-8 y subtítulos con marcas de tiempo |
+
+Desarrollado por Victor Silva ([Smart Studio](https://smartstudio.dev)).
 
 [Inicio rápido](#-inicio-rápido) · [Uso](#-uso-con-python) · [Script Bash](#-uso-con-bash) · [Consideraciones](#-consideraciones)
 
@@ -55,7 +66,9 @@ python -m pip install openai-whisper torch "numpy<2"
 
 Estos pasos instalan explícitamente `openai-whisper`, el paquete que proporciona el reconocimiento de voz utilizado por el proyecto.
 
-> **Sobre `install.sh`:** el instalador incluido instala primero `openai-whisper`, pero después desinstala e instala `whisper`, un paquete distinto. Utiliza los pasos manuales anteriores para preparar el entorno.
+También puedes ejecutar `bash install.sh`: comprueba FFmpeg, crea `.venv` en la raíz del proyecto e instala `openai-whisper`, `torch` y `numpy<2` con el Python de ese entorno. No instala el paquete distinto llamado `whisper`. Después, activa el entorno con `source .venv/bin/activate`.
+
+La primera ejecución puede descargar el modelo de Whisper. El reconocimiento se realiza en tu equipo; el tiempo y la memoria necesarios dependen del modelo y del hardware.
 
 ### 3. Transcribe tu primer archivo
 
@@ -208,9 +221,21 @@ Sin destino explícito, guarda junto al archivo en modo individual o en la carpe
 ```text
 ss-transcribe-audio/
 ├── README.md                 # Documentación
+├── LICENSE                   # Licencia MIT
+├── docs/assets/              # Cabecera del proyecto
 ├── ss-transcribe-audio.py     # CLI de transcripción y exportación TXT/SRT
 ├── ss-transcribe-audio.sh     # Entorno, amplificación y procesamiento por lotes
-└── install.sh                # Instalador incluido; consulta la nota de instalación
+└── install.sh                # Instalación en .venv con openai-whisper
 ```
 
 Los entornos `.venv` y `pyenv` se crean localmente según la forma de instalación utilizada.
+
+## 🤝 Contribuir
+
+Abre una incidencia con el formato de entrada, el comando y el error reproducible. Para proponer cambios, crea una rama y comprueba un archivo y una carpeta con muestras que puedas compartir. No adjuntes grabaciones privadas a las incidencias.
+
+## Licencia
+
+Código de Victor Silva (Smart Studio) bajo [MIT](LICENSE). Whisper, PyTorch, NumPy y FFmpeg conservan sus propias licencias; la licencia del proyecto no sustituye sus condiciones ni otorga derechos sobre las grabaciones procesadas.
+
+<p align="center"><strong>Smart Studio</strong><br><a href="https://smartstudio.dev/open-source">Explora nuestras herramientas de código abierto</a></p>
