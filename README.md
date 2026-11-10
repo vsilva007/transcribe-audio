@@ -38,7 +38,7 @@ La lectura de los archivos depende de FFmpeg. En modo archivo individual no se a
 
 ## 🚀 Inicio rápido
 
-Necesitas **Python 3 con soporte para `venv`**, **pip** y **FFmpeg** disponible en el `PATH`. Ejecuta los ejemplos desde la raíz del proyecto.
+Necesitas **Python 3.9–3.12 con soporte para `venv`**, **pip** y **FFmpeg** disponible en el `PATH`. Ejecuta los ejemplos desde la raíz del proyecto.
 
 ### 1. Instala FFmpeg
 
@@ -58,15 +58,13 @@ sudo apt-get install ffmpeg python3-venv
 ### 2. Prepara el entorno de Python
 
 ```bash
-python3 -m venv .venv
+bash install.sh
 source .venv/bin/activate
-python -m pip install --upgrade pip
-python -m pip install openai-whisper torch "numpy<2"
 ```
 
 Estos pasos instalan explícitamente `openai-whisper`, el paquete que proporciona el reconocimiento de voz utilizado por el proyecto.
 
-También puedes ejecutar `bash install.sh`: comprueba FFmpeg, crea `.venv` en la raíz del proyecto e instala `openai-whisper`, `torch` y `numpy<2` con el Python de ese entorno. No instala el paquete distinto llamado `whisper`. Después, activa el entorno con `source .venv/bin/activate`.
+El instalador comprueba FFmpeg, selecciona un Python compatible y crea `.venv` en la raíz del proyecto. Conserva una copia de los entornos rotos o de otra versión antes de recrearlos. Instala `openai-whisper`, `torch` y `numpy<2`; en macOS Intel limita las versiones a `torch==2.2.2` y `numba<0.63` para utilizar paquetes binarios compatibles. Puedes elegir el intérprete con `PYTHON_BIN=/ruta/a/python3.12 bash install.sh`.
 
 La primera ejecución puede descargar el modelo de Whisper. El reconocimiento se realiza en tu equipo; el tiempo y la memoria necesarios dependen del modelo y del hardware.
 
